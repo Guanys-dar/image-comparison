@@ -1,7 +1,9 @@
-# Compare two images
+# 图片对比评估
 
-Open https://guanys-dar.github.io/image-comparison/ in desktop Chrome or Edge. Use the session and anonymous ID supplied by the organizer.
+请用电脑上的 Chrome 或 Edge 浏览器打开：https://guanys-dar.github.io/image-comparison/
 
-Each session has 21 image pairs and three questions per pair, targeting no more than 15 minutes including instructions. Stop at 15 minutes and export a partial file if needed. Download your answers as JSON and return that file privately to the organizer. Nothing is submitted automatically.
+使用组织者分配的组别和匿名编号。每组共 21 对图片，每对回答三个问题，包括阅读说明在内最多花 15 分钟。达到 15 分钟时请停止并导出已有答案，未完成也可以导出。
 
-Read [HOW_TO.md](HOW_TO.md) and [RATER_INSTRUCTIONS.md](RATER_INSTRUCTIONS.md) before starting. This repository contains the volunteer pages and display images only.
+开始前请阅读[操作指南](HOW_TO.md)和[评分说明](RATER_INSTRUCTIONS.md)。图片提示词保留原始英文。点击“导出答案”，将下载的 JSON 文件私下发给组织者；网页不会自动提交，请勿将答案上传到公开仓库。
+
+本仓库仅包含志愿者使用的网页、显示图片和说明。访问网页不需要 GitHub 账号。

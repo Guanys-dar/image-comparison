@@ -2,17 +2,18 @@
 
 const data = JSON.parse(document.getElementById('session-data').textContent);
 const criteria = {
-  overall: 'Which image do you prefer overall?',
-  alignment: 'Which image better matches the text prompt?',
-  quality: 'Which image has better visual quality?',
+  overall: '总体偏好：综合来看，你更喜欢哪张图片？',
+  alignment: '提示词符合度：哪张图片更符合文字描述？',
+  quality: '视觉质量：哪张图片的画质更好、瑕疵更少？',
 };
 const choices = ['left', 'right', 'tie'];
+const choiceLabels = {left: '左图更好', right: '右图更好', tie: '难分高下'};
 const element = id => document.getElementById(id);
 let rater = '';
 let answers = {};
 let position = 0;
 
-element('session-label').textContent = data.label;
+element('session-label').textContent = `第 ${Number(data.block_id.slice(-2))} 组`;
 const suggestedId = new URLSearchParams(location.search).get('rater');
 if (suggestedId && /^R\d{2,3}$/.test(suggestedId)) element('rater').value = suggestedId;
 
@@ -24,7 +25,7 @@ function save() {
   try {
     localStorage.setItem(storageKey(), JSON.stringify({answers, position}));
   } catch {
-    element('notice').textContent = 'Local saving is unavailable. Export your answers before closing this page.';
+    element('notice').textContent = '浏览器无法自动保存。请在关闭页面前导出答案。';
   }
 }
 
@@ -57,7 +58,7 @@ function render() {
         save();
         render();
       };
-      label.append(input, choice[0].toUpperCase() + choice.slice(1));
+      label.append(input, choiceLabels[choice]);
       group.append(label);
     }
     element('questions').append(group);
@@ -65,7 +66,7 @@ function render() {
   const completed = data.trials.filter(item => Object.keys(criteria).every(criterion => choices.includes(answers[item.id]?.[criterion]))).length;
   element('progress').max = data.trials.length;
   element('progress').value = completed;
-  element('count').textContent = `Pair ${position + 1} of ${data.trials.length} · ${completed} complete`;
+  element('count').textContent = `第 ${position + 1} / ${data.trials.length} 对图片 · 已完成 ${completed} 对`;
   element('previous').disabled = position === 0;
   element('next').disabled = !Object.keys(criteria).every(criterion => choices.includes(answers[trial.id]?.[criterion])) || position === data.trials.length - 1;
   element('finished').hidden = completed !== data.trials.length;
@@ -74,7 +75,7 @@ function render() {
 element('start').onclick = () => {
   const value = element('rater').value.trim().toUpperCase();
   if (!/^R\d{2,3}$/.test(value)) {
-    element('notice').textContent = 'Enter the anonymous ID supplied by the organizer, such as R01.';
+    element('notice').textContent = '请输入组织者分配的匿名编号，例如 R01。';
     return;
   }
   rater = value;
@@ -87,7 +88,7 @@ element('start').onclick = () => {
     if (saved.answers && typeof saved.answers === 'object') answers = saved.answers;
     if (Number.isInteger(saved.position) && saved.position >= 0 && saved.position < data.trials.length) position = saved.position;
   } catch {
-    element('notice').textContent = 'Saved answers could not be loaded. Export regularly while completing this session.';
+    element('notice').textContent = '无法读取已保存的答案。请在作答过程中及时导出备份。';
   }
   element('main').hidden = false;
   element('export').disabled = false;
@@ -113,5 +114,5 @@ element('export').onclick = () => {
   link.download = `ratings_${rater}_${data.block_id}.json`;
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  element('notice').textContent = 'Send the downloaded JSON file privately to the organizer. This page does not submit it automatically.';
+  element('notice').textContent = '请把下载的 JSON 文件私下发给组织者。本页面不会自动提交答案。';
 };

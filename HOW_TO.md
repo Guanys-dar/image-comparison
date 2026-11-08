@@ -1,9 +1,11 @@
-# Compare two images
+# 图片对比评估：操作指南
 
-1. Open your assigned session link in desktop Chrome or Edge. For an offline ZIP, extract the whole folder and open the included session HTML.
-2. Read the instructions, enter the organizer-assigned anonymous ID, and press Start / resume. Do not enter your name or email address.
-3. Read each prompt and compare the two images. Click either image to enlarge it. Independently answer overall preference, prompt alignment, and visual quality with left, right, or tie. Press Next after all three answers.
-4. Spend no more than 15 minutes, including instructions. There are 21 pairs. At 15 minutes, stop and export even if you have not finished. Partial answers are welcome; do not rush through unfinished pairs.
-5. Press Export answers and send the downloaded JSON file privately to the organizer using the provided return channel. Do not edit the JSON. Export downloads a file; it does not submit automatically.
+1. 使用电脑上的 Chrome 或 Edge 浏览器，打开组织者分配的组别链接。若使用离线压缩包，请先解压全部文件，再打开对应的网页文件。
+2. 阅读说明，输入组织者分配的匿名编号，例如 R01，点击“开始／继续作答”。请勿填写姓名或邮箱。
+3. 阅读每对图片的文字提示词，比较左右两张图片。点击图片可放大。分别回答“总体偏好”“提示词符合度”“视觉质量”，每项选择“左图更好”“右图更好”或“难分高下”。三项都作答后，点击“下一对”。三个问题请独立判断，不需要选出相同答案。
+4. 每组共 21 对图片。包括阅读说明在内，最多花 15 分钟。达到 15 分钟时，即使未完成，也请停止并导出已有答案；不要为赶进度而随意作答。
+5. 点击“导出答案”，将下载的 JSON 文件通过组织者指定的私下渠道发回。请不要修改文件内容，也不要将答案上传到公开仓库。导出只会下载文件，不会自动提交。
 
-Answers stay in this browser on this device. Export a backup before closing. To resume, use the same link or extracted file, browser, device, and anonymous ID. Avoid private/incognito browsing and clearing browser storage. If local saving is unavailable, export before closing.
+答案保存在当前电脑的当前浏览器中，关闭前建议导出备份。继续作答时，请使用同一链接或解压后的同一文件、同一浏览器、同一设备和同一匿名编号。避免使用无痕模式或清除浏览器数据；若网页提示无法自动保存，请务必在关闭前导出。
+
+图片提示词保留原始英文，请依据原文判断图片是否符合描述。

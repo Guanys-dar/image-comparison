@@ -1,9 +1,11 @@
-# Rater instructions
+# 图片对比评估：评分说明
 
-Judge each criterion independently. Choose left, right, or tie. Use an anonymous organizer-assigned ID. Do not infer method identity.
+请独立判断以下三个方面。每项选择“左图更好”“右图更好”或“难分高下”。请使用组织者分配的匿名编号。
 
-- Overall preference: which image would you prefer overall, considering both the prompt and visual appearance? For the prompt “a crisp red circle on white”, circle.png is a reasonable overall preference over blurred.png.
-- Prompt alignment: which image better matches the objects, attributes, counts, relationships, and text? For “a red circle”, examples/circle.png matches better than examples/square.png.
-- Visual quality: compare sharpness, detail, artifacts, anatomy, and aesthetics. examples/circle.png is sharper than examples/blurred.png. Ignore differences that are intentional in the prompt.
+- **总体偏好：** 综合考虑提示词和视觉效果，你总体更喜欢哪张图片？例如，提示词为“白底上清晰的红色圆形”时，清晰的圆形通常比模糊版本更合适。
+- **提示词符合度：** 哪张图片更符合描述中的物体、属性、数量、关系和文字要求？例如，提示词要求“红色圆形”时，`examples/circle.png` 比 `examples/square.png` 更符合要求。
+- **视觉质量：** 比较清晰度、细节、瑕疵、人体结构和美感。例如，`examples/circle.png` 比 `examples/blurred.png` 更清晰。不要因为提示词本身要求的特殊效果而扣分。
 
-The illustrated examples are synthetic shapes created solely for instructions; none are study images. Ties are appropriate when neither candidate is meaningfully better. Inspect images at full size when useful. Export your answers when finished; partial exports are allowed.
+示例中的图形仅用于说明，不属于待评估图片。如果两张图片在某一方面没有明显差别，请选择“难分高下”。需要时可点击图片查看大图。三个问题可以选择不同答案，请勿为了保持一致而强行选择同一侧。
+
+每组 21 对图片，包括阅读说明在内最多花 15 分钟。达到 15 分钟时请停止并导出，未完成也可以提交已有答案。点击“导出答案”后，请把下载的 JSON 文件私下发给组织者；网页不会自动提交。
