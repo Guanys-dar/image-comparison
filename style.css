@@ -1,0 +1,13 @@
+:root{font:17px/1.5 system-ui,sans-serif;color:#202733;background:#f5f7fa}
+body{max-width:1450px;margin:24px auto;padding:0 24px 48px}
+h1{line-height:1.15;margin-bottom:8px}h2{font-size:1.15rem}
+a{color:#174ea6}button,input{font:inherit;padding:10px 14px;border:1px solid #9ca6b4;border-radius:6px}button{cursor:pointer;background:white}button:disabled{cursor:default;opacity:.5}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #1767cf;outline-offset:3px}
+.intro,.card,details,fieldset{background:white;border:1px solid #d4dbe4;border-radius:8px;padding:16px;margin:16px 0}
+.muted{color:#516075}.controls{position:sticky;top:0;background:#f5f7fa;padding:12px 0;z-index:1;border-bottom:1px solid #d4dbe4;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.controls label{display:flex;align-items:center;gap:8px}.controls input{width:90px}
+.progress{margin:12px 0}progress{width:100%;height:18px}#notice{display:block;margin-top:8px;color:#7b3210}#prompt{white-space:pre-wrap;line-height:1.6;background:white;padding:16px;border-radius:8px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}.pair h2{margin:4px 0}.pair img{display:block;width:100%;aspect-ratio:1;object-fit:contain;cursor:zoom-in;background:#e6ebf1}
+legend{font-weight:650}fieldset label{display:inline-flex;align-items:center;gap:8px;margin-right:20px;padding:8px;cursor:pointer}fieldset input{width:18px;height:18px}
+.navigation{display:flex;gap:12px;margin-top:16px}.examples{display:flex;gap:16px;flex-wrap:wrap}.examples figure{margin:0;font-size:.85rem}.examples img{width:100px;height:100px;object-fit:contain}
+dialog{max-width:96vw;max-height:96vh;border:1px solid #aab5c4;border-radius:8px}dialog img{display:block;max-width:90vw;max-height:88vh;width:auto;height:auto}dialog::backdrop{background:#202733aa}
+.sessions{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}.sessions a{display:block;padding:20px;background:white;border:1px solid #d4dbe4;border-radius:8px;font-weight:650;text-decoration:none}.sessions a:hover{border-color:#174ea6}
+@media(max-width:650px){body{padding:0 12px}.pair{gap:8px}.controls{position:static}fieldset label{margin-right:6px}}
