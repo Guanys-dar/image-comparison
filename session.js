@@ -19,12 +19,12 @@ const suggestedId = new URLSearchParams(location.search).get('rater');
 if (suggestedId && /^R\d{2,3}$/.test(suggestedId)) element('rater').value = suggestedId;
 
 function storageKey() {
-  return [data.study_id, data.subset_id, data.block_id, rater, data.image_profile.id].join(':');
+  return [data.study_id, data.subset_id, data.block_id, rater, data.image_profile.id, data.protocol_version].join(':');
 }
 
 function save() {
   try {
-    localStorage.setItem(storageKey(), JSON.stringify({answers, position}));
+    localStorage.setItem(storageKey(), JSON.stringify({answers, position, trial_id: data.trials[position].id}));
   } catch {
     element('notice').textContent = '浏览器无法自动保存。请在关闭页面前导出答案。';
   }
@@ -150,9 +150,19 @@ element('start').onclick = () => {
   position = 0;
   element('notice').textContent = '';
   try {
-    const saved = JSON.parse(localStorage.getItem(storageKey()) || '{}');
-    if (saved.answers && typeof saved.answers === 'object') answers = saved.answers;
-    if (Number.isInteger(saved.position) && saved.position >= 0 && saved.position < data.trials.length) position = saved.position;
+    const previousKey = [data.study_id, data.subset_id, data.block_id, rater, data.image_profile.id].join(':');
+    const current = localStorage.getItem(storageKey());
+    const saved = JSON.parse(current || localStorage.getItem(previousKey) || '{}');
+    if (saved.answers && typeof saved.answers === 'object') {
+      answers = Object.fromEntries(data.trials.filter(trial => choices.includes(saved.answers[trial.id]?.overall)).map(trial => [trial.id, {overall: saved.answers[trial.id].overall}]));
+    }
+    const savedIndex = data.trials.findIndex(trial => trial.id === saved.trial_id);
+    if (savedIndex >= 0) position = savedIndex;
+    else if (current && Number.isInteger(saved.position) && saved.position >= 0 && saved.position < data.trials.length) position = saved.position;
+    else {
+      const unanswered = data.trials.findIndex(trial => !choices.includes(answers[trial.id]?.overall));
+      position = unanswered >= 0 ? unanswered : data.trials.length - 1;
+    }
   } catch {
     element('notice').textContent = '无法读取已保存的答案。请在作答过程中及时导出备份。';
   }
