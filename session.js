@@ -19,7 +19,7 @@ const suggestedId = new URLSearchParams(location.search).get('rater');
 if (suggestedId && /^R\d{2,3}$/.test(suggestedId)) element('rater').value = suggestedId;
 
 function storageKey() {
-  return [data.study_id, data.subset_id, data.block_id, rater].join(':');
+  return [data.study_id, data.subset_id, data.block_id, rater, data.image_profile.id].join(':');
 }
 
 function save() {
@@ -174,7 +174,8 @@ element('export').onclick = () => {
     block_id: data.block_id,
     exported_at: new Date().toISOString(),
     rating_criteria: Object.keys(criteria),
-    protocol_version: 'overall_zh_v2',
+    protocol_version: data.protocol_version,
+    image_profile: data.image_profile,
     answers: data.trials.filter(trial => choices.includes(answers[trial.id]?.overall)).map(trial => ({trial_id: trial.id, overall: answers[trial.id].overall})),
   };
   const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'}));
